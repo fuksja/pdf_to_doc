@@ -24,12 +24,13 @@ Assumptions: the project will only be using open source software
 
 ## Getting started
 - chosen language/method: Python3 and flask
+- chosen method of file conversion: pdf2docx 0.5.3 library: https://pypi.org/project/pdf2docx/
 
 ## Time frame
 Project is to be completed until the end of June 2022.
 
 ## Documentation
-To be created.
+general description of fuctionality: user goes to the upload page, uploads a pdf file, conversion takes place and user receives doc file as output.
 
 ## License
 This project uses GPLv3 license. Part of this project derived from other software, created by other programmers, by community or made in different way may and probably uses different license.
