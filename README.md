@@ -12,7 +12,7 @@
 - [License](#license)
 
 ### Status and roadmap
-Project is in the planning phase. To be be updated.
+To be be updated.
 
 ## Author
 - [Basia Lewicka aka fuksja](https://github.com/fuksja)
@@ -23,7 +23,7 @@ Stakeholder requirements: there is a need for a tool for fast and automated conv
 Assumptions: the project will only be using open source software
 
 ## Getting started
-To be be updated.
+- chosen language/method: Python3 and flask
 
 ## Time frame
 Project is to be completed until the end of June 2022.
