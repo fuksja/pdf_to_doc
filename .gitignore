@@ -1,0 +1,7 @@
+__pycache__
+env
+secret.key
+app/static/img/client
+app/static/img/uploads
+*html.save*
+*py.save*
