@@ -32,8 +32,10 @@ Project is to be completed until the end of June 2022.
 ## Documentation
 general description of fuctionality: user goes to the upload page, uploads a pdf file, conversion takes place and user receives doc file as output.
 
-## License
-This project uses GPLv3 license. Part of this project derived from other software, created by other programmers, by community or made in different way may and probably uses different license.
+## License and copyright notice
+This project uses GPLv3 license. Part of this project is derived from other software, created by other programmers, community or made in different way also under the  GNU General Public License v3.0:
+[Source of pdf2docx library used for file conversion](https://github.com/dothinking/pdf2docx)
+[License](https://github.com/dothinking/pdf2docx/blob/master/LICENSE)
 
 ## Output
 
