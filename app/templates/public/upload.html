@@ -16,7 +16,7 @@
 				<div class="form-group">
 					<label>Upload pdf file:</label>
 					<div class="custom file">
-						<input oninput="filesize(this);" type="file" class="custom-file-input" name="pdf" id="pdf">
+						<input type="file" class="custom-file-input" name="pdf" id="pdf">
 						<label class="custom-file-label" for="pdf">Select file...</label>
 					</div>
 				</div>
@@ -34,9 +34,6 @@
 
 <script>
 
-function filesize(elem){
-	document.cookie = `filesize=${elem.files[0].size}`;
-}
 </script>
 
 {% endblock %}

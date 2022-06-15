@@ -13,11 +13,6 @@ def index():
 	print(app.config["DB_NAME"])
 	return render_template("public/index.html")
 
-@app.route ("/jinja")
-def jinja():
-	my_name = "Basia"
-	return render_template("public/jinja.html", my_name=my_name)
-
 @app.route ("/profile")
 def profile():
 	return render_template("public/profile.html")
@@ -51,13 +46,13 @@ def allowed_format(filename):
 
 def allowed_filesize(filesize):
 
-	if int(filesize) <= app.config["MAX_FILESIZE"]:
+	if request.content_length <= app.config["MAX_FILESIZE"]:
         	return True
 	else:
                 return False
 
 def convert_pdf_to_doc(input_file, output_file):
-	#output_file=os.path.join(app.config["CLIENT_DOCS"], input_file.split(".")[0]+".doc")
+
 	cv = Converter(input_file)
 	cv.convert(output_file)
 	cv.close()
@@ -69,7 +64,7 @@ def upload():
 
 		if request.files:
 
-			if not  allowed_filesize(request.cookies.get("filesize")):
+			if not  allowed_filesize(request.content_length):
 				print("File exceeded maximum size")
 				return redirect(request.url)
 
@@ -90,7 +85,7 @@ def upload():
 				output_file = filename.split(".")[0]+".doc"
 				output_path = os.path.join(app.config["CLIENT_DOCS"], output_file)
 				convert_pdf_to_doc(input_path, output_path)
-				print("file converted")
+				print("File converted")
 
 				return redirect("/get-doc/{}".format(output_file))
 
