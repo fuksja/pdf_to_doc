@@ -7,6 +7,7 @@ import os
 from werkzeug.utils import secure_filename
 
 from pdf2docx import Converter
+import subprocess
 
 @app.route ("/")
 def index():
@@ -57,6 +58,10 @@ def convert_pdf_to_doc(input_file, output_file):
 	cv.convert(output_file)
 	cv.close()
 	print("Output saved")
+
+def convert_to_pptx(input_file, output_file):
+	list_files = subprocess.run(["pdf2pptx", "input_file",  "-o output_file"])
+	print("pptx created")
 
 @app.route ("/upload", methods=["GET", "POST"])
 def upload():
