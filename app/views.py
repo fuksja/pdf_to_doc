@@ -59,8 +59,8 @@ def convert_pdf_to_doc(input_file, output_file):
 	cv.close()
 	print("Output saved")
 
-def convert_to_pptx(input_file, output_file):
-	list_files = subprocess.run(["pdf2pptx", "input_file",  "output_file"])
+def convert_to_pptx(input_file):
+	subprocess.run(["pdf2pptx", input_file])
 	print("pptx created")
 
 @app.route ("/upload", methods=["GET", "POST"])
@@ -99,7 +99,7 @@ def upload():
 			input_path = os.path.join(app.config["PDF_UPLOADS"], filename)
 			output_file = filename.split(".")[0]+".pptx"
 			output_path = os.path.join(app.config["CLIENT_DOCS"], output_file)
-			convert_to_pptx(input_path, output_path)
+			convert_to_pptx(input_path)
 			print("File converted to pptx")
 			return redirect("/get-doc/{}".format(output_file))
 			return render_template("public/upload.html")
@@ -117,4 +117,3 @@ def get_doc(doc_name):
 
 	except FileNotFoundError:
 		abort(404)
-
