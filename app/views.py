@@ -60,19 +60,17 @@ def convert_pdf_to_doc(input_file, output_file):
 	print("Output saved")
 
 def convert_to_pptx(input_file, output_file):
-	list_files = subprocess.run(["pdf2pptx", "input_file",  "-o output_file"])
+	list_files = subprocess.run(["pdf2pptx", "input_file",  "output_file"])
 	print("pptx created")
 
 @app.route ("/upload", methods=["GET", "POST"])
 def upload():
 	if request.method == "POST":
-
-		if request.files:
+		if request.form.get('submit_button') == 'convert to .doc':
 
 			if not  allowed_filesize(request.content_length):
 				print("File exceeded maximum size")
 				return redirect(request.url)
-
 			pdf = request.files["pdf"]
 
 			if pdf.filename == "":
@@ -90,11 +88,26 @@ def upload():
 				output_file = filename.split(".")[0]+".doc"
 				output_path = os.path.join(app.config["CLIENT_DOCS"], output_file)
 				convert_pdf_to_doc(input_path, output_path)
-				print("File converted")
+				print("File converted to doc")
 
 				return redirect("/get-doc/{}".format(output_file))
+			return render_template("public/upload.html")
 
-	return render_template("public/upload.html")
+		elif request.form.get('submit_button') == 'convert to .pptx':
+			pdf = request.files["pdf"]
+			filename = secure_filename(pdf.filename)
+			input_path = os.path.join(app.config["PDF_UPLOADS"], filename)
+			output_file = filename.split(".")[0]+".pptx"
+			output_path = os.path.join(app.config["CLIENT_DOCS"], output_file)
+			convert_to_pptx(input_path, output_path)
+			print("File converted to pptx")
+			return redirect("/get-doc/{}".format(output_file))
+			return render_template("public/upload.html")
+
+		else:
+			return redirect(request.url)
+	elif  request.method == 'GET':
+		return render_template("public/upload.html")
 
 @app.route ("/get-doc/<doc_name>")
 def get_doc(doc_name):

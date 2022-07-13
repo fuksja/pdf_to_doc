@@ -11,21 +11,27 @@
                         <h1>Convert file</h1>
 			<hr>
 		
-			<form action="/upload" method="POST" enctype="multipart/form-data">
-			
+			<form method="POST" action="/upload" enctype="multipart/form-data">
+
+						
+
 				<div class="form-group">
-					<label> Choose pdf file:</label>
+					<label><h5> Choose pdf file for conversion:</h5></label>
+					<p>
 					<div class="custom file">
 					<input type="file" class="custom-file-input" name="pdf" id="pdf">
-					<label class="custom-file-label" for="pdf">       <- .pdf file to be converted</label>
-					<p>
+					<label class="custom-file-label" for="pdf"><h6>       <- .pdf file to be converted</h6></label>
+					<p></p>
 					</div>
+					<div>
+                                	<input type="submit" name="submit_button" value="convert to .doc" />
+                                	<input type="submit" name="submit_button" value="convert to .pptx" />
+                        		</div>
 				</div>
-				<button onclick= "converttodoc('{{ request.url }}')" id="converttodoc_btn" class="bth btn-primary">convert to .doc</button>				
-				<button onclick= "converttopttx('{{ request.url }}')" id="converttopttx_btn" class="bth btn-primary">convert to .pttx</button>
-			</form>
-                </div>
-        </div>
+			</form>																							</form>
+	
+		</div>
+	</div>
 </div>
 
 

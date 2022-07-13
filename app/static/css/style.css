@@ -3,7 +3,10 @@
   font-family: 'Roboto', sans-serif;
   font-family: 'Roboto Slab', serif;
 }
-
+.button {
+background-color: #0A85FF;
+color:#FFFFFF;
+}
 .body {
     margin: 10px;	
     font-family: 'Roboto', sans-serif;
