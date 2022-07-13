@@ -61,7 +61,7 @@ def convert_pdf_to_doc(input_file, output_file):
 
 def convert_to_pptx(input_file):
 	subprocess.run(["pdf2pptx", input_file])
-	print("pptx created")
+	print("Pptx file created")
 
 @app.route ("/upload", methods=["GET", "POST"])
 def upload():
@@ -85,10 +85,10 @@ def upload():
 				pdf.save(os.path.join(app.config["PDF_UPLOADS"], filename))
 				print('File uploaded')
 				input_path = os.path.join(app.config["PDF_UPLOADS"], filename)
-				output_file = filename.split(".")[0]+".doc"
+				output_file = os.path.splitext(filename)[0] + ".doc"
 				output_path = os.path.join(app.config["CLIENT_DOCS"], output_file)
 				convert_pdf_to_doc(input_path, output_path)
-				print("File converted to doc")
+				print("Doc file created")
 
 				return redirect("/get-doc/{}".format(output_file))
 			return render_template("public/upload.html")
@@ -97,7 +97,7 @@ def upload():
 			pdf = request.files["pdf"]
 			filename = secure_filename(pdf.filename)
 			input_path = os.path.join(app.config["PDF_UPLOADS"], filename)
-			output_file = filename.split(".")[0]+".pptx"
+			output_file = os.path.splitext(filename)[0]+".pptx"
 			output_path = os.path.join(app.config["CLIENT_DOCS"], output_file)
 			convert_to_pptx(input_path)
 			print("File converted to pptx")
