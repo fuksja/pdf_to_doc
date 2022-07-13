@@ -20,7 +20,7 @@ Stakeholder requirements: there is a need for a tool for fast and automated conv
 
 General description of fuctionality: user goes to the upload page, uploads a pdf file, conversion takes place and user receives doc file as output.
 
-EDIT: added new functionality: conversion to .pptx format. User uploads file and chooses whether to convert to .doc or .pptx  
+EDIT: added new functionality: conversion to .pptx format. User uploads file and chooses whether to convert to .doc or .pptx and converted file pops out. 
 
 ### Assumptions: 
 - the project will only be using open source software and will be open software licensed  
